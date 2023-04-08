@@ -516,7 +516,8 @@ MonoBehaviour:
   RS: {fileID: 1494877652}
   PointsTxt: {fileID: 1517198557}
   CanPlay: 1
-  MoveSpeed: 7
+  BaseMoveSpeed: 7
+  CurrentMoveSpeed: 7
   PointBaseValue: 3
   PointsMultiplier: 1
 --- !u!1001 &1163096496

@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         selfCollider.center = ccCenterRoll;
         selfCollider.height = ccHeightRoll;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1);
         ac.SetBool("rolling", false);
         Debug.Log("not rolling");
 

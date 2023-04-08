@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public bool CanPlay = true;
 
-    public float MoveSpeed;
+    public float BaseMoveSpeed, CurrentMoveSpeed;
     public float PointBaseValue, PointsMultiplier;
 
     public void StartGame()
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         CanPlay = true;
         PM.ac.SetTrigger("respawn");
 
+        CurrentMoveSpeed = BaseMoveSpeed;
+        PointsMultiplier = 1;
         Points = 0;
     }
 
@@ -37,8 +39,8 @@ public class GameManager : MonoBehaviour
             PointsMultiplier += .05f * Time.deltaTime;
             PointsMultiplier = Mathf.Clamp(PointsMultiplier, 1, 10);
 
-            MoveSpeed += .1f * Time.deltaTime;
-            MoveSpeed = Mathf.Clamp(MoveSpeed, 1, 20);
+            CurrentMoveSpeed += .1f * Time.deltaTime;
+            CurrentMoveSpeed = Mathf.Clamp(CurrentMoveSpeed, 1, 20);
         }
 
         PointsTxt.text = "Score: " + ((int)Points).ToString();

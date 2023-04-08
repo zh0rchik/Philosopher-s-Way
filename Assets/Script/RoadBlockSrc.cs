@@ -18,6 +18,6 @@ public class RoadBlockSrc : MonoBehaviour
     void Update()
     {
         if (GM.CanPlay)
-            transform.Translate(moveVec * Time.deltaTime * GM.MoveSpeed);
+            transform.Translate(moveVec * Time.deltaTime * GM.CurrentMoveSpeed);
     }
 }
