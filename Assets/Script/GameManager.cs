@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject ResultObj;
+    public MainMenuController MMC;
     public PlayerMovement PM;
     public RoadSpawner RS;
 
@@ -28,6 +29,14 @@ public class GameManager : MonoBehaviour
         CurrentMoveSpeed = BaseMoveSpeed;
         PointsMultiplier = 1;
         Points = 0;
+    }
+
+    public void MoveToMenu()
+    {
+        CanPlay = false;
+        ResultObj.SetActive(false);
+
+        MMC.OpenMenu();
     }
 
     private void Update()

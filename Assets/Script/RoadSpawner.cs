@@ -8,7 +8,7 @@ public class RoadSpawner : MonoBehaviour
     public GameObject[] RoadBlockPrefabs;
 
     float startBlockXPos;
-    int blocksCount = 7;
+    int blocksCount = 12;
     float blockLength = 0;
     int safeZone = 50;
 
