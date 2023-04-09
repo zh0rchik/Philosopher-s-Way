@@ -355,6 +355,7 @@
 "Assets/Script/PlayerMovement.cs"
 "Assets/Script/RoadBlockSrc.cs"
 "Assets/Script/RoadSpawner.cs"
+"Assets/Script/SwipeController.cs"
 -langversion:9.0
 
 /deterministic

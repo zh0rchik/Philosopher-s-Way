@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638165795590000000
+      ticks: 638165903650000000
     m_Hash: 4172434816
   m_LockFileStatus:
     m_FilePath: "C:/Users/\u0421\u0435\u0440\u0436/MyRunner/Packages/packages-lock.json"
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638165841335863260
+      ticks: 638165903650000000
     m_Hash: 2361106827
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         startPosition = transform.position;
+        SwipeController.SwipeEvent += CheckInput;
     }
 
     private void FixedUpdate()
@@ -76,46 +77,40 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (isGrounded())
-        {
             ac.ResetTrigger("falling");
+        else if(rb.velocity.y < -8.9f)
+            StartCoroutine(DoFall());
 
-            if (GM.CanPlay)
-            {
-                if (!isRolling)
-                {
-                    if (Input.GetAxisRaw("Vertical") > 0)
-                        wannaJump = true;
-                    else if (Input.GetAxisRaw("Vertical") < 0)
-                        StartCoroutine(DoRoll());
-                }
-            }
-        }
-
-        CheckInput();
 
         Vector3 newPos = transform.position;
         newPos.z = Mathf.Lerp(newPos.z, FirstLanePos + (laneNumber * LaneDistance), Time.deltaTime * SideSpeed);
         transform.position = newPos;
     }
 
-    bool isGrounded()
-    {
-        return Physics.Raycast(transform.position, Vector3.down, 0.05f);
-    }
+   
 
-    void CheckInput()
+    void CheckInput(SwipeController.SwipeType type)
     {
+        if (isGrounded() && GM.CanPlay && !isRolling)
+        {
+            if (type == SwipeController.SwipeType.UP)
+                wannaJump = true;
+            else if (type == SwipeController.SwipeType.DOWN)
+                StartCoroutine(DoRoll());
+
+        }
+
         int sign = 0;
 
         if (!GM.CanPlay || isRolling)
             return;
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (type == SwipeController.SwipeType.LEFT)
         {
             Debug.Log("Push A or Left");
             sign = -1;
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (type == SwipeController.SwipeType.RIGHT)
         {
             Debug.Log("Push D or Right");
             sign = 1;
@@ -125,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
 
         laneNumber += sign;
         laneNumber = Mathf.Clamp(laneNumber, 0, lanesCount);
+    }
+
+    bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 0.05f);
     }
 
     IEnumerator DoRoll()
