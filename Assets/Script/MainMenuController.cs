@@ -5,11 +5,19 @@ using UnityEngine;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject AboutProject;
+    public GameObject MemoObject;
     public GameManager GM;
 
     public void PlayBtn()
     {
         gameObject.SetActive(false);
+        MemoObject.SetActive(true);
+        //GM.StartGame();
+    }
+
+    public void ClsMemoBtn()
+    {
+        MemoObject.SetActive(false);
         GM.StartGame();
     }
 
